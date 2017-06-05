@@ -2,7 +2,7 @@
 {% load staticfiles %}
     <html>
         <head>
-        
+
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -10,17 +10,22 @@
           
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">  
             <title>blog</title>
+            {{ form.media }}
 
         </head>
         <body>
     <div class="page-header">
-        {% if user.is_authenticated %}
+        
+            {% if user.is_superuser %}
             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+            <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span>
+            <a href="{% url 'comment_drafts' %}" class="top-menu"><span class="glyphicon glyphicon-comment"></span></a>
+
 
         <p class="top-menu"><a href="{% url 'logout' %}">Log out</a></p>
-        {% else %}
+            {% else %}
             <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+            
         {% endif %}
         <h1><a href="/">All about 
         Bill Gates</a></h1>
@@ -34,4 +39,6 @@
         </div>
     </div>
 </body>
+
+
     </html>
