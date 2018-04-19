@@ -1,4 +1,3 @@
-
 from math import tan
 
 def simpson(f, a, b, n):
